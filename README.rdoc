@@ -1,0 +1,31 @@
+== README
+
+* Description
+Sample Rails application. Using Rails 4.1, Ruby 2.1 and bootstrap.
+
+** APPLICATION LOGIN
+I have created an account with seeds. 
+:email => 'john@gmail.com', :password => 'topsecret'
+
+* Ruby version (RVM)
+
+** Installing RVM 
+Depending on your environment, there is a quick guide on RVM site.
+https://rvm.io/rvm/install
+
+RVM will install ruby 2.1.1 and create a gemset when you change your
+pwd to the app's directory using .rvmrc file. From then on, every time
+you enter the app's directory.
+
+* Database creation
+Using Sqlite and configuration information is at db/database.yml.
+First database need to be created. To do so, we are going to run 
+on a terminal:
+bin/rake db:migrate
+
+Then we need to run seeds:
+rake db:seed
+
+* TODO
+There is a TODO file on the app's root directory called TODO that
+shows remaining tasks.

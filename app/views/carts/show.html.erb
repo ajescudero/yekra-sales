@@ -1,0 +1,35 @@
+<h1 class="cart-text text-right"><%= render 'layouts/cart_text' %></h1>
+<div class="col-xs-8 col-xs-offset-2 shopping-cart">
+  <%= form_for @purchase, url: :checkout_cart, method: :post do |purchase_form| %>
+		
+		<% if @purchase.purchase_products.size == 0 %>
+		  <p class="text-center">
+		    There are no products in your shopping cart.  Please <%= link_to "go back", root_path %> and add some products to your cart.
+		  </p>
+		<% else %>
+		    <% @purchase.purchase_products.each do |purchase_product| %>
+					<div class="well">
+						<%= purchase_form.fields_for purchase_product, index: purchase_product.id do |purchase_product_form| %>
+					  <div class="row">
+					    <div class="col-xs-8">
+					      <h4><%= purchase_product.product.name %></h4>
+					    </div>
+					    <div class="col-xs-4">
+				      
+				        <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency purchase_product.unit_price %></span></h4>
+				        <div class="row">
+				          <div class="col-xs-4">
+				            <%= purchase_product_form.number_field :quantity, value: purchase_product.quantity.to_i, class: "form-control", min: 1 %>
+				            <%= purchase_product_form.hidden_field :product_id, value: purchase_product.id %>
+				          </div>
+				        </div>
+				        <h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency purchase_product.total_price %></span></h4>
+					    </div>
+					  </div>
+					</div>
+		    <% end %>
+		  <% end %>
+		<% end %>
+    <%= purchase_form.submit "Checkout", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+TODO
+
+- fix errors on controller specs and factory girl.
+- fix hardcoded approved flag on users.
+- fix styles errors.
+- refactor application_controller#current_purchase.

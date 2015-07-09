@@ -1,0 +1,2 @@
+<%= link_to "#{current_purchase.purchase_products.map {|pp| pp.quantity }.sum } Items in Cart ( #{number_to_currency current_purchase.subtotal} )", cart_path, class: "btn btn-link" %>
+
